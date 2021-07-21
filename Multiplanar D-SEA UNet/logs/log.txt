@@ -1,0 +1,11 @@
+Log for model in: /home/yzk/桌面/Neuro-data/MultiPlanarUNet-master
+--------------------------------------------------------------------------------
+>>> Logged by: 'entry_func' in 'train.py'
+Fitting model in path:
+/home/yzk/桌面/Neuro-data/MultiPlanarUNet-master
+--------------------------------------------------------------------------------
+>>> Logged by: '__init__' in 'hparams.py'
+YAML path:    /home/yzk/桌面/Neuro-data/MultiPlanarUNet-master/train_hparams.yaml
+--------------------------------------------------------------------------------
+>>> Logged by: '_base_loader_func' in 'data_preparation_funcs.py'
+Looking for images...

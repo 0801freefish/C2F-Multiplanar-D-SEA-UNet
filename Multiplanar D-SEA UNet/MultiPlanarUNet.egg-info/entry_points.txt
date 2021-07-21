@@ -1,0 +1,3 @@
+[console_scripts]
+mp = MultiPlanarUNet.bin.mp:entry_func
+

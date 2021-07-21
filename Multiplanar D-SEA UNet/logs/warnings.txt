@@ -1,0 +1,4 @@
+Log for model in: /home/yzk/桌面/Neuro-data/MultiPlanarUNet-master
+[WARNING] Path /home/yzk/anaconda3/lib/python3.6/site-packages/MultiPlanarUNet-0.2.3-py3.6.egg does not contain a Git repository, or Git is not installed on this system.
+-- The software verison match could not be varified against the hyperparameter file.
+-- Software version will not be added to the hyperparameter file.
