@@ -1,22 +1,25 @@
 ## Coarse-to-fine Multiplanar D-SEA UNet for Automatic 3D Carotid Segmentation in CTA Images
 
 
-##1. Install the virtual environment annconda (already configured, no need to repeat the configuration)
+### 1. Install the virtual environment annconda
 Installation tutorial: https://blog.csdn.net/yaohuan2017/article/details/108669791
 Configuring environment variables tutorial: https://blog.csdn.net/weixin_38705903/article/details/86533863
 Add Tsinghua source tutorial: https://blog.csdn.net/qq_45688354/article/details/108014189
-Create a virtual environment conda create -n multiplanarunet python=3.6
-Activate the virtual environment: source activate multiplanarunet
-Install tensorflow-gpu: conda install tensorflow-gpu=1.11.0
+Create a virtual environment 
+    ```conda create -n multiplanarunet python=3.6```
+Activate the virtual environment: 
+    ```source activate multiplanarunet```
+Install tensorflow-gpu:
+    ```conda install tensorflow-gpu=1.11.0```
 
-#2. Install mulplanar unet (already configured, no need to repeat configuration)
+### 2. Install mulplanar unet (already configured, no need to repeat configuration)
 The github link of the project: https://github.com/perslev/MultiPlanarUNet
 (1) Open the terminal and run in the /media/bjtu/new volume/yyy/MultiPlanarUNet-master folder: sudo /home/bjtu/anaconda3/envs/multiplanarunet/bin/python setup.py install
 What is missing in the process and what to download: sudo /home/bjtu/anaconda3/envs/multiplanarunet/bin/pip install installation package name
 (2) Change the network model unet to D-SEA UNet: Open the folder /home/bjtu/anaconda3/envs/multiplanarunet/lib/python3.6/site-packages/MultiPlanarUNet-0.2.3-py3.6.egg/MultiPlanarUNet /models
 Name the original unet.py unet-initial.py, and name the modified D-SEA UNet network unet.py
 
-#3. Coarse segmentation
+### 3. Coarse segmentation
 (1) Modify the network model (remove the attention mechanism)
 Open the folder /home/bjtu/anaconda3/envs/multiplanarunet/lib/python3.6/site-packages/MultiPlanarUNet-0.2.3-py3.6.egg/MultiPlanarUNet/models
 Add the # comment at the beginning of line 193 in the unet.py file
@@ -54,13 +57,13 @@ Run python evaluate.py to output the accuracy of the test set segmentation dice 
 For ease of management, rename the prediction folder to prediction-0.8974
 Delete the ./nii_files folder
 
-#4. Perform full cropping on the coarse segmentation test results
+### 4. Perform full cropping on the coarse segmentation test results
 Open the terminal under the /media/bjtu/new volume/yyy/data/preprocessed folder:
 Modify the line 103 of vessel_pred.py predpath ='/media/bjtu/new volume/yyy/prediction-0.8974/'+folder_name+'/prediction.nii.gz'
 Run python vessel_pred.py
 Get the full cropped folder New-fullcrop-test-pred of the coarse segmentation test results, this folder will be used as the fine segmentation test set to continue the fine segmentation
 
-#5. Fine segmentation
+### 5. Fine segmentation
 (1) Modify the network model (plus attention mechanism)
 Open the folder /home/bjtu/anaconda3/envs/multiplanarunet/lib/python3.6/site-packages/MultiPlanarUNet-0.2.3-py3.6.egg/MultiPlanarUNet/models
 Remove the # comment on line 193 in the unet.py file
@@ -99,7 +102,7 @@ For easier management, rename the prediction folder to pred
 iction-0.9252
 Delete the ./nii_files folder
 
-#6. Complete the fine segmentation test results and restore the area without carotid artery that was cropped around during cropping to the original image size of 512*512*512 to obtain the final segmentation result
+### 6. Complete the fine segmentation test results and restore the area without carotid artery that was cropped around during cropping to the original image size of 512*512*512 to obtain the final segmentation result
 (1) Open the terminal under the /media/bjtu/new volume/yyy/data/preprocessed folder:
 Modify restore.py lines 105-106 predpath1 ='/media/bjtu/new volume/yyy/prediction-0.8974/'+folder_name+'/prediction.nii.gz'#Rough segmentation result;predpath2 ='/media/bjtu /New volume/yyy/prediction-0.9252/'+folder_name+'/prediction.nii.gz'#Fine segmentation result
 Run python restore.py
