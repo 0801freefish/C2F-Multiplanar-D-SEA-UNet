@@ -1,8 +1,7 @@
 ## Coarse-to-fine Multiplanar D-SEA UNet for Automatic 3D Carotid Segmentation in CTA Images
-Carotid artery lumen segmentation experiment from coarse to fine
-The code and data are located at: /media/bjtu/new volume/yyy
 
-#1. Install the virtual environment annconda (already configured, no need to repeat the configuration)
+
+##1. Install the virtual environment annconda (already configured, no need to repeat the configuration)
 Installation tutorial: https://blog.csdn.net/yaohuan2017/article/details/108669791
 Configuring environment variables tutorial: https://blog.csdn.net/weixin_38705903/article/details/86533863
 Add Tsinghua source tutorial: https://blog.csdn.net/qq_45688354/article/details/108014189
